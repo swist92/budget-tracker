@@ -16,6 +16,7 @@ fetch("/api/transaction")
   })
   .then(data => {
     // save db data on global variable
+TODO:    const db = window.db 
     transactions = data;
 
     populateTotal();
