@@ -1,14 +1,6 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(reg => {
-        console.log("We found your service worker file!", reg);
-      });
-  });
-}
-
 let transactions = [];
 let myChart;
+// const fetch = require("node-fetch");
 
 fetch("/api/transaction")
   .then(response => {
@@ -16,7 +8,6 @@ fetch("/api/transaction")
   })
   .then(data => {
     // save db data on global variable
-// TODO:    const db = window.db <- do we need this?
     transactions = data;
 
     populateTotal();

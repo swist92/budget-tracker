@@ -6,14 +6,15 @@ const FILES_TO_CACHE = [
     "/favicon.ico",
     "/icons/icon-144x144.png",
     "/icons/icon-192x192.png", 
-    "/icons/icon-512x512.png"
+    "/icons/icon-512x512.png",
+    "/manifest.json"
   ];
   
   // const PRECACHE = "precache-v1";
   //  TODO: do we need a precache?
 
   const CACHE_NAME = "static-cache-v2";
-  const runtime = "runtime";
+  // const runtime = "runtime";
   const DATA_CACHE_NAME = "data-cache-v1";
   
   // install
@@ -73,10 +74,15 @@ const FILES_TO_CACHE = [
     // if the request is not for the API, serve static assets using "offline-first" approach.
     // see https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook#cache-falling-back-to-network
     evt.respondWith(
-      caches.match(evt.request).then(function(response) {
-        return response || fetch(evt.request);
+      fetch(evt.request).catch(function () {
+        return caches.match(evt.request).then(function (response) {
+          if (response) {
+            return response;
+          } else if (evt.request.headers.get("accept").includes("text/html")) {
+            // return the cached home page for all requests for html pages
+            return caches.match("/");
+          }
+        });
       })
     );
   });
-  
-  
