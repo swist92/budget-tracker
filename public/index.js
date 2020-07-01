@@ -16,7 +16,7 @@ fetch("/api/transaction")
   })
   .then(data => {
     // save db data on global variable
-TODO:    const db = window.db 
+// TODO:    const db = window.db <- do we need this?
     transactions = data;
 
     populateTotal();
