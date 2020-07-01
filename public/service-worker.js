@@ -2,9 +2,16 @@ const FILES_TO_CACHE = [
     "/",
     "/index.html",
     "/index.js",
-    "/styles.css"
+    "/styles.css",
+    "/favicon.ico",
+    "/icons/icon-144x144.png",
+    "/icons/icon-192x192.png", 
+    "/icons/icon-512x512.png"
   ];
   
+  // const PRECACHE = "precache-v1";
+  //  TODO: do we need a precache?
+
   const CACHE_NAME = "static-cache-v2";
   const runtime = "runtime";
   const DATA_CACHE_NAME = "data-cache-v1";
