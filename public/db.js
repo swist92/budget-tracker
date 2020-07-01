@@ -34,9 +34,15 @@ function saveRecord(record) {
 
 function checkDatabase() {
   // open a transaction on your pending db
-  let transaction = db.transaction(["pending"], "readwrite");
+
+  // TODO: changed to const from let
+
+  const transaction = db.transaction(["pending"], "readwrite"); 
   // access your pending object store
-  let store = transaction.objectStore("pending");
+
+  // TODO: changed to const from let
+
+  const store = transaction.objectStore("pending"); 
   // get all records from store and set to a variable
   const getAll = store.getAll();
 
@@ -53,10 +59,16 @@ function checkDatabase() {
       .then(response => response.json())
       .then(() => {
         // if successful, open a transaction on your pending db
-        let transaction = db.transaction(["pending"], "readwrite");
+
+        
+        // TODO: changed to const from let
+        const transaction = db.transaction(["pending"], "readwrite");
 
         // access your pending object store
-        let store = transaction.objectStore("pending");
+
+     
+        // TODO: changed to const from let
+        const store = transaction.objectStore("pending");
 
         // clear all items in your store
         store.clear();
